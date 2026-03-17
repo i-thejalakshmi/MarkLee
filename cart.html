@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart | Marklee</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+    :root {
+        --amazon-orange: #AEE2FF;
+        --amazon-orange-hover: #7cc9c9;
+        --amazon-blue: #007185;
+        --amazon-dark: #0F1111;
+        --price-red: #B12704;
+    }
+
+    body {
+        background-color: #EAEDED; 
+        font-family: 'Montserrat', sans-serif;
+        color: var(--amazon-dark);
+    }
+
+    .cart-page { padding-top: 100px; }
+
+    .cart-container {
+        display: grid;
+        grid-template-columns: 1fr 300px;
+        gap: 20px;
+        max-width: 1350px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+
+    .cart-main {
+        background: white;
+        padding: 20px;
+        border-radius: 4px;
+    }
+
+    .cart-main h1 {
+        font-size: 28px;
+        font-weight: 400;
+        margin-bottom: 0;
+    }
+
+    .price-header {
+        text-align: right;
+        font-size: 14px;
+        color: #565959;
+        border-bottom: 1px solid #DDD;
+        padding-bottom: 5px;
+    }
+
+    .cart-item {
+        display: grid;
+        grid-template-columns: 180px 1fr 100px;
+        gap: 20px;
+        padding: 20px 0;
+        border-bottom: 1px solid #DDD;
+    }
+
+    .cart-item img {
+        width: 180px;
+        height: 180px;
+        object-fit: contain;
+    }
+
+    .item-info h3 {
+        color: var(--amazon-blue);
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: 5px;
+        cursor: pointer;
+    }
+
+    .stock-status { color: #007600; font-size: 12px; margin-bottom: 5px; }
+
+    .item-actions {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-top: 15px;
+        font-size: 13px;
+    }
+
+   
+    .qty-dropdown {
+        background: #F0F2F2;
+        border: 1px solid #D5D9D9;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(15,17,17,.15);
+        padding: 5px 10px;
+        cursor: pointer;
+    }
+
+    .action-link {
+        color: var(--amazon-blue);
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .action-link:hover { text-decoration: underline; color: #C7511F; }
+
+    .item-price-column {
+        text-align: right;
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+    
+    .cart-sidebar {
+        background: white;
+        padding: 20px;
+        border-radius: 4px;
+        height: fit-content;
+    }
+
+    .subtotal-box h2 {
+        font-size: 18px;
+        font-weight: 400;
+        margin-bottom: 20px;
+    }
+
+    .proceed-btn {
+        background: var(--amazon-orange);
+        border: 1px solid #AEE2FF;
+        border-radius: 8px;
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+        cursor: pointer;
+        box-shadow: 0 2px 5px rgba(213,217,217,.5);
+    }
+
+    .proceed-btn:hover { background: var(--amazon-orange-hover); }
+
+    .subtotal-footer {
+        text-align: right;
+        font-size: 18px;
+        margin-top: 10px;
+    }
+</style>
+</head>
+<body class="cart-page">
+    <header id="navbar" class="scrolled">
+        <nav class="container">
+            <div class="logo" onclick="window.location.href='index.html'" style="cursor:pointer">MARKLEE</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#shop">Shop</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container cart-container">
+        <div class="cart-items-section">
+            <h2>Shopping Cart</h2>
+            <hr>
+            <div id="cartList">
+                </div>
+        </div>
+
+        <div class="checkout-box">
+            <div class="subtotal" id="subtotalText">Subtotal (0 items): <b>₹0.00</b></div>
+            <button class="proceed-btn" onclick="openCartOrderModal()">Proceed to Buy</button>
+        </div>
+    </main>
+
+    <div id="orderModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeOrderModal()">&times;</span>
+        <h2 id="modalProductTitle">Checkout Order</h2>
+        <form id="whatsappForm">
+            <input type="hidden" id="productName">
+            <input type="text" id="userName" placeholder="Full Name" required>
+            <input type="tel" id="userPhone" placeholder="Phone Number" required>
+            <input type="tel" id="userWhatsapp" placeholder="WhatsApp Number" required>
+            <textarea id="userAddress" placeholder="Full Address" required></textarea>
+            <input type="text" id="userPincode" placeholder="Pincode" required>
+            <button type="submit" class="submit-order-btn">Confirm Order on WhatsApp</button>
+        </form>
+    </div>
+</div>
+    </div>
+
+    <script src="js/WhatsApp.js"></script>
+    <script>
+        const productRegistry = {
+            'shoe-rack': { name: 'Professional 5-Tier Shoe Rack', price: 4500, img: 'images/shoe rack.jpg' },
+            'ironing-table': { name: 'Premium Ironing Table', price: 2300, img: 'images/iron table.jpg' },
+            'chopper': { name: 'Precision Kitchen Chopper', price: 230, img: 'images/chopper.jpg' },
+            'cooker': { name: 'Premium Pressure Cooker', price: 1300, img: 'images/cooker.jpg' },
+            'airfryer': { name: 'Digital Airfryer', price: 1300, img: 'images/airfryer.jpg' }
+        };
+
+        function displayCart() {
+    const cartIds = JSON.parse(localStorage.getItem('marklee_cart')) || [];
+    const cartList = document.getElementById('cartList');
+    let total = 0;
+    let html = '';
+
+    if (cartIds.length === 0) {
+        cartList.innerHTML = "<div style='padding:40px; text-align:center;'><h3>Your Marklee Bag is empty.</h3><a href='index.html' class='action-link'>Continue Shopping</a></div>";
+        updateSubtotal(0, 0);
+        return;
+    }
+
+    html += `<div class="price-header">Price</div>`;
+
+    cartIds.forEach((id, index) => {
+        const item = productRegistry[id];
+        if (item) {
+            total += item.price;
+            html += `
+                <div class="cart-item">
+                    <img src="${item.img}" alt="${item.name}">
+                    <div class="item-info">
+                        <h3 onclick="window.location.href='product-details.html?id=${id}'">${item.name}</h3>
+                        <p class="stock-status">In stock</p>
+                        <p style="font-size:12px; color:#565959;"></p>
+                        <div class="item-actions">
+                            <select class="qty-dropdown" onchange="updateQty(${index})">
+                                <option>Qty: 1</option>
+                                <option>2</option>
+                                <option>3</option>
+                            </select>
+                            <span class="action-link" onclick="removeItem(${index})">Delete</span>
+                            <span style="color:#DDD">|</span>
+                            <span class="action-link">Save for later</span>
+                        </div>
+                    </div>
+                    <div class="item-price-column">
+                        ₹${item.price.toLocaleString()}
+                    </div>
+                </div>
+            `;
+        }
+    });
+
+    html += `<div class="subtotal-footer">Subtotal (${cartIds.length} items): <b>₹${total.toLocaleString()}</b></div>`;
+    
+    cartList.innerHTML = html;
+    updateSubtotal(cartIds.length, total);
+
+            
+            const names = cartIds.map(id => productRegistry[id].name).join(", ");
+            document.getElementById('productName').value = names;
+        }
+
+        function updateSubtotal(count, total) {
+            document.getElementById('subtotalText').innerHTML = `Subtotal (${count} items): <b>₹${total.toLocaleString()}</b>`;
+        }
+
+        function removeItem(index) {
+            let cart = JSON.parse(localStorage.getItem('marklee_cart')) || [];
+            cart.splice(index, 1);
+            localStorage.setItem('marklee_cart', JSON.stringify(cart));
+            displayCart();
+        }
+
+        window.onload = displayCart;
+
+        function openCartOrderModal() {
+    const cartIds = JSON.parse(localStorage.getItem('marklee_cart')) || [];
+    if (cartIds.length === 0) {
+        alert("Your cart is empty!");
+        return;
+    }
+
+    const productNames = cartIds.map(id => productRegistry[id].name).join(", ");
+    
+    document.getElementById("modalProductTitle").innerText = "Order: " + cartIds.length + " Items";
+    document.getElementById("productName").value = productNames;
+    
+    document.getElementById("orderModal").style.display = "block";
+}
+
+document.getElementById("whatsappForm").onsubmit = function(e) {
+    e.preventDefault();
+    
+    const products = document.getElementById("productName").value;
+    const name = document.getElementById("userName").value;
+    const phone = document.getElementById("userPhone").value;
+    const wa = document.getElementById("userWhatsapp").value;
+    const address = document.getElementById("userAddress").value;
+    const pin = document.getElementById("userPincode").value;
+
+    const message = `*MARKLEE CART ORDER*%0A%0A` +
+                    `*Items:* ${products}%0A` +
+                    `*Customer:* ${name}%0A` +
+                    `*Phone:* ${phone}%0A` +
+                    `*WhatsApp:* ${wa}%0A` +
+                    `*Address:* ${address}%0A` +
+                    `*Pincode:* ${pin}`;
+
+    window.open(`https://wa.me/918089636070?text=${message}`, '_blank');
+    
+    
+    
+    this.reset();
+    closeOrderModal();
+};
+
+function closeOrderModal() {
+    document.getElementById("orderModal").style.display = "none";
+}
+    </script>
+</body>
+</html>

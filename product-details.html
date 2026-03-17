@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details | Marklee Luxury Minimalist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .product-page-wrapper { background-color: #fff; padding-top: 120px; }
+        .product-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; margin-bottom: 100px; }
+        .gallery-container { display: flex; gap: 20px; }
+        .thumbnail-stack { display: flex; flex-direction: column; gap: 12px; }
+        .thumb-img { width: 60px; height: 60px; object-fit: cover; border: 1px solid #e0e0e0; cursor: pointer; transition: 0.3s; }
+        .thumb-img:hover, .thumb-img.active { border-color: var(--brand-light-blue); box-shadow: 0 0 5px rgba(174, 226, 255, 0.5); }
+        .main-display { flex-grow: 1; border: 1px solid #f5f5f5; padding: 20px; display: flex; justify-content: center; background: #fff; }
+        .main-display img { max-width: 100%; height: auto; }
+
+        .slider-arrow {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9); border: 1px solid #ddd;
+            width: 45px; height: 45px; border-radius: 50%; cursor: pointer;
+            font-size: 1.5rem; z-index: 100; display: flex; align-items: center;
+            justify-content: center; transition: 0.3s; color: #333;
+        }
+        .slider-arrow:hover { background: #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .prev { left: 15px; }
+        .next { right: 15px; }
+
+        .details-panel h1 { font-size: 2.2rem; margin-bottom: 10px; color: var(--navy-dark); }
+        .price-tag { font-size: 1.8rem; color: #1A202C; margin: 15px 0; font-weight: 600; }
+        .features-section { margin: 30px 0; border-top: 1px solid #eee; padding-top: 20px; }
+        .action-box { display: flex; flex-direction: column; gap: 15px; max-width: 350px; }
+        .btn-amazon-cart { background: #AEE2FF; border: 1px solid #5cc6ff; border-radius: 20px; padding: 12px; font-weight: 600; cursor: pointer; }
+        .btn-amazon-wa { background: #4086ae; border: 1px solid #1e3f70; border-radius: 20px; padding: 12px; font-weight: 600; cursor: pointer; color: white; }
+
+        @media (max-width: 992px) {
+            .product-layout { grid-template-columns: 1fr; }
+            .gallery-container { flex-direction: column-reverse; }
+            .thumbnail-stack { flex-direction: row; }
+        }
+    </style>
+</head>
+<body class="product-page-wrapper">
+
+    <header id="navbar" class="scrolled">
+        <nav class="container">
+            <div class="logo">MARKLEE</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#shop">Shop</a></li>
+               <li>
+      <a href="cart.html">
+        <i class="fa-solid fa-bag-shopping"></i> 
+        <span id="cart-count">0</span>
+      </a>
+    </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="product-layout">
+            <div class="gallery-container">
+                <div class="thumbnail-stack" id="thumbStack"></div>
+                <div class="main-display-wrapper" style="position: relative; flex-grow: 1;">
+                    <button class="slider-arrow prev" onclick="changeSlide(-1)">&#10094;</button>
+                    <div class="main-display">
+                        <img id="mainImg" src="" alt="Product Main View">
+                    </div>
+                    <button class="slider-arrow next" onclick="changeSlide(1)">&#10095;</button>
+                </div>
+            </div>
+
+            <div class="details-panel">
+                <nav style="font-size: 0.8rem; color: #565959; margin-bottom: 15px;">
+                    Home &rsaquo; Kitchen &rsaquo; Premium Essentials
+                </nav>
+                <h1 id="productTitle">Professional 5-Tier Shoe Rack</h1>
+                <div class="price-tag" id="productPrice">₹4,500.00</div>
+                
+                <div class="features-section">
+                    <h3>About this item</h3>
+                    <ul id="productFeatures" class="feature-bullets"></ul>
+                </div>
+
+                <div class="action-box">
+                    <button class="btn-amazon-cart" onclick="addToCart()">
+                        <i class="fa-solid fa-cart-plus"></i> Add to Bag
+                    </button>
+                    <button class="btn-amazon-wa" onclick="openOrderModal()">
+                        <i class="fa-brands fa-whatsapp"></i> Buy Now via WhatsApp
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeOrderModal()">&times;</span>
+            <h2 id="modalProductTitle">Order Details</h2>
+            <form id="whatsappForm">
+                <input type="hidden" id="productName">
+                <input type="text" id="userName" placeholder="Full Name" required>
+                <input type="tel" id="userPhone" placeholder="Phone Number" required>
+                <input type="tel" id="userWhatsapp" placeholder="WhatsApp Number" required>
+                <textarea id="userAddress" placeholder="Full Address" required></textarea>
+                <input type="text" id="userPincode" placeholder="Pincode" required>
+                <button type="submit" class="submit-order-btn">Confirm Order on WhatsApp</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/WatsApp.js"></script> 
+    <script src="js/navigation.js"></script> 
+</body>
+    <script>
+        const productRegistry = {
+            'shoe-rack': { name: 'Professional 5-Tier Shoe Rack', price: '₹4,500.00', images: ['images/shoe rack.jpg', 'images/shoe rack2.jpg'], features: ['Space-saving design', 'Magnetic locking', 'Ventilated'] },
+            'ironing-table': { name: 'Premium Ironing Table', price: '₹2,300.00', images: ['images/iron table.jpg', 'images/iron table-2.jpg'], features: ['Heat-resistant cotton', 'Height adjustable', 'Steam rest'] },
+            'chopper': { name: 'Precision Kitchen Chopper', price: '₹230.00', images: ['images/chopper.jpg', 'images/chopper-2.jpg'], features: ['Ultra-sharp steel blades', 'BPA-free body', 'One-touch easy pull'] },
+            'cooker': { name: 'Premium Pressure Cooker', price: '₹1,300.00', images: ['images/cooker.jpg', 'images/cooker-2.jpg'], features: ['Virgin aluminum', 'Safety valve', 'Bakelite handles'] },
+            'airfryer': { name: 'Digital Airfryer', price: '₹1,300.00', images: ['images/airfryer.jpg', 'images/airfryer-2.jpg'], features: ['360° Rapid Air Tech', '8 presets', 'Non-stick basket'] }
+        };
+
+        window.onload = () => {
+            initPage();
+            updateCartBadge();
+        };
+
+        function addToCart() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get('id');
+    
+    if (id) {
+        let cart = JSON.parse(localStorage.getItem('marklee_cart')) || [];
+        cart.push(id);
+        localStorage.setItem('marklee_cart', JSON.stringify(cart));
+        
+        updateCartBadge(); 
+        
+        alert("Added to your bag!");
+    }
+}
+    </script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Craftsmanship | Marklee</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --off-white: #FDFCF8;
+            --navy-dark: #1A202C;
+            --brand-blue: #AEE2FF;
+            --accent-gold: #D4AF37;
+            --transition: 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body { 
+            background-color: var(--off-white); 
+            color: var(--navy-dark); 
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        header {
+            padding: 20px 0;
+            background: white;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1.5rem; letter-spacing: 2px; color: var(--brand-blue); text-decoration: none; }
+        .nav-links { display: flex; list-style: none; gap: 30px; }
+        .nav-links a { text-decoration: none; color: var(--brand-blue); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; }
+
+        .craft-header { padding: 160px 0 40px; text-align: center; }
+        .craft-header h1 { font-size: 3rem; font-family: 'Playfair Display', serif; margin-bottom: 20px; }
+        .gold-divider { width: 60px; height: 2px; background: var(--accent-gold); margin: 0 auto; }
+
+        .craft-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            margin: 60px auto;
+            border-top: 1px solid var(--brand-blue);
+            border-bottom: 1px solid var(--brand-blue);
+            align-items: stretch;
+        }
+
+        .craft-box {
+            background: #fff;
+            padding: 60px 40px;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid var(--brand-blue);
+            transition: var(--transition);
+            cursor: default;
+        }
+
+        .craft-box:last-child { border-right: none; }
+
+        .number-wrapper {
+            height: 80px; 
+            display: flex;
+            align-items: flex-end;
+            margin-bottom: 10px;
+            overflow: visible;
+        }
+
+        .box-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            color: rgba(174, 226, 255, 0.6); 
+            line-height: 1;
+            font-weight: 900;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .craft-box:hover .box-number {
+            color: rgba(174, 226, 255, 1);
+            transform: translateY(-8px);
+        }
+
+        .phase-label {
+            display: block;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            height: 15px;
+        }
+
+        .craft-box h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin: 0 0 15px 0;
+            color: var(--navy-dark);
+            line-height: 1.2;
+            min-height: 70px;
+        }
+
+        .craft-box p { font-size: 0.95rem; color: #666; line-height: 1.8; }
+
+        .brand-footer-cta { text-align: center; padding: 80px 0 120px; }
+        .btn-primary {
+            display: inline-block;
+            background: var(--brand-blue);
+            color: var(--navy-dark);
+            text-decoration: none;
+            padding: 18px 50px;
+            font-weight: 600;
+            border: none;
+            transition: 0.3s;
+        }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+
+        @media (max-width: 992px) {
+            .craft-grid { grid-template-columns: 1fr; border-bottom: none; }
+            .craft-box { border-right: none; border-bottom: 1px solid var(--brand-blue); min-height: auto; }
+            .craft-box h2 { min-height: auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">MARKLEE</a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#shop">Shop</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="craft-header">
+            <div class="container">
+                <span style="letter-spacing: 5px; text-transform: uppercase; font-size: 0.8rem; color: var(--accent-gold);">The Marklee Standard</span>
+                <h1>The Art of Making</h1>
+                <div class="gold-divider"></div>
+            </div>
+        </div>
+
+        <section class="container">
+            <div class="craft-grid">
+                <div class="craft-box">
+                    <div class="number-wrapper"><span class="box-number">1</span></div>
+                    <span class="phase-label">The Concierge</span>
+                    <h2>White-Glove Setup</h2>
+                    <p>Experience effortless luxury. Upon request, our specialist team will visit your home to personally assemble and position your unit, ensuring the perfect fit for your sanctuary.</p>
+                </div>
+                <div class="craft-box">
+                    <div class="number-wrapper"><span class="box-number">2</span></div>
+                    <span class="phase-label">The Geometry</span>
+                    <h2>Kinetic Structure</h2>
+                    <p>Engineered for the modern nomad. Our precision-machined folding mechanism allows for effortless storage and mobility without compromising structural rigidity.</p>
+                </div>
+                <div class="craft-box">
+                    <div class="number-wrapper"><span class="box-number">3</span></div>
+                    <span class="phase-label">The Detail</span>
+                    <h2>Silent Precision</h2>
+                    <p>Integrated locking systems ensure every closure is satisfyingly silent. No clunky latches, just pure engineering.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="brand-footer-cta container">
+            <p style="opacity: 0.5; font-size: 0.7rem; letter-spacing: 3px; margin-bottom: 25px; text-transform: uppercase;">Handcrafted in Kerala, India</p>
+            <a href="index.html#shop" class="btn-primary">EXPLORE COLLECTION</a>
+        </div>
+    </main>
+
+</body>
+</html>

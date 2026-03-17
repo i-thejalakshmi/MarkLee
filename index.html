@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marklee | Luxury Minimalist Commerce</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header id="navbar">
+        <nav class="container">
+            <div class="zara-hamburger" id="mobile-menu-trigger">
+                <span class="zara-line"></span>
+                <span class="zara-line"></span>
+            </div>
+            <div class="logo">MARKLEE</div>
+            <div class="search-container" style="position: relative;">
+                <form action="#" class="search-form">
+                    <input type="text" id="product-search" placeholder="Search for luxury essentials..." aria-label="Search" autocomplete="off">
+                    <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
+                <div id="search-suggestions" style="position: absolute; top: 100%; left: 0; width: 100%; background: white; z-index: 999999; display: none; box-shadow: 0 5px 15px rgba(0,0,0,0.2); border-radius: 0 0 4px 4px;"></div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#shop">Shop</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li>
+                    <a href="cart.html" class="cart-nav-link">
+                        <i class="fa-solid fa-bag-shopping"></i> 
+                        <span id="cart-count">0</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-slider">
+            <div class="slide slide1"></div>
+            <div class="slide slide2"></div>
+            <div class="slide slide3"></div>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1 class="fade-in">Redefining <br>Modern Elegance</h1>
+            <p class="fade-in">Curated premium essentials for the modern professional.</p>
+            <div class="hero-btns fade-in">
+                <a href="#shop" class="btn btn-primary">Shop Collection</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="categories container">
+        <div class="category-card">
+            <div class="card-img" style="background-image: url('images/main rack.jpg');"></div>
+            <div class="card-overlay"><h3>Storage</h3></div>
+        </div>
+        <div class="category-card">
+            <div class="card-img" style="background-image: url('images/download.jpg');"></div>
+            <div class="card-overlay"><h3>Kitchen Essentials</h3></div>
+        </div>
+        <div class="category-card">
+            <div class="card-img" style="background-image: url('images/main iron.jpg');"></div>
+            <div class="card-overlay"><h3>Home Essentials</h3></div>
+        </div>
+    </section>
+
+    <section class="container section-padding" id="shop">
+        <h2 class="section-title">Our Collection</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <a href="product-details.html?id=shoe-rack" class="product-link">
+                    <div class="product-img" style="background-image: url('images/shoe rack.jpg');"></div>
+                    <h5>Shoe Rack</h5>
+                </a>
+                <p>₹4,500.00</p>
+                <a href="#" class="order-btn">ORDER NOW</a>
+            </div>
+            <div class="product-card">
+                <a href="product-details.html?id=ironing-table" class="product-link">
+                    <div class="product-img" style="background-image: url('images/iron table.jpg');"></div>
+                    <h5>Ironing Table</h5>
+                </a>
+                <p>₹2,300.00</p>
+                <a href="#" class="order-btn">ORDER NOW</a>
+            </div>
+            <div class="product-card">
+                <a href="product-details.html?id=chopper" class="product-link">
+                    <div class="product-img" style="background-image: url('images/chopper.jpg');"></div>
+                    <h5>Chopper</h5>
+                </a>
+                <p>₹230.00</p>
+                <a href="#" class="order-btn">ORDER NOW</a>
+            </div>
+            <div class="product-card">
+                <a href="product-details.html?id=cooker" class="product-link">
+                    <div class="product-img" style="background-image: url('images/cooker.jpeg');"></div>
+                    <h5>Pressure Cooker</h5>
+                </a>
+                <p>₹1,300.00</p>
+                <a href="#" class="order-btn">ORDER NOW</a>
+            </div>
+            <div class="product-card">
+                <a href="product-details.html?id=airfryer" class="product-link">
+                    <div class="product-img" style="background-image: url('images/airfryer.jpeg');"></div>
+                    <h5>Airfryer</h5>
+                </a>
+                <p>₹1,300.00</p>
+                <a href="#" class="order-btn">ORDER NOW</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-col" id="contact">
+                <div class="logo">MARKLEE</div>
+                <p>Minimalism meets luxury. <br>Direct from our manufacturing studio to your home.</p>
+                <div class="socials" style="margin-top: 20px;">
+                    <a href="https://www.instagram.com/markleeofficial_/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=61588223772091" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#shop">Shop Collection</a></li>
+                    <li><a href="craftsmanship.html">Our Craftsmanship</a></li>
+                    <li><a href="https://wa.me/918089636070?text=Hello%20Marklee%20Concierge" target="_blank">Bulk Order Inquiries</a></li>
+                    <li><a href="policies.html#privacy">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col" id="contact-us">
+                <h4>Contact Us</h4>
+                <div class="contact-details-grid">
+                    <div class="contact-row">
+                        <div class="contact-icon"><i class="fa-brands fa-whatsapp"></i></div>
+                        <div class="contact-text">
+                            <a href="https://wa.me/918089636070" target="_blank" class="contact-link-active">Chat with Concierge</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-row">
+                        <div class="contact-icon"><i class="fa-regular fa-envelope"></i></div>
+                        <div class="contact-text">
+                            <a href="mailto:jsenterprisesmpm@gmail.com" class="contact-link-active">jsenterprisesmpm@gmail.com</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-row">
+                        <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <div class="contact-text">
+                            <a href="https://www.google.com/maps/search/Pathinarungal,+Malappuram,+676306" target="_blank" class="contact-link-active">Kerala, India</a>
+                            <p class="factory-address">
+                                Factory Address:<br>
+                                Pathinarungal, Malappuram, 676306
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">×</span>
+            <h2 id="modalProductTitle">Order Details</h2>
+            <form id="whatsappForm">
+                <input type="hidden" id="productName">
+                <input type="text" id="userName" placeholder="Full Name" required>
+                <input type="tel" id="userPhone" placeholder="Phone Number" required>
+                <input type="tel" id="userWhatsapp" placeholder="WhatsApp Number" required>
+                <textarea id="userAddress" placeholder="Full Address" required></textarea>
+                <input type="text" id="userPincode" placeholder="Pincode" required>
+                <button type="submit" class="submit-order-btn">Confirm Order on WhatsApp</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/navigation.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const modal = document.getElementById("orderModal");
+        const orderButtons = document.querySelectorAll(".order-btn");
+        const closeBtn = document.querySelector(".close-btn");
+        const whatsappForm = document.getElementById("whatsappForm");
+
+        orderButtons.forEach(btn => {
+            btn.onclick = function(e) {
+                e.preventDefault(); 
+                const productCard = this.closest(".product-card");
+                const product = productCard.querySelector("h5").innerText;
+                document.getElementById("modalProductTitle").innerText = "Order: " + product;
+                document.getElementById("productName").value = product;
+                if (modal) modal.style.display = "block";
+                return false;
+            };
+        });
+
+        if(closeBtn) closeBtn.onclick = () => modal.style.display = "none";
+        window.onclick = (e) => { if (e.target == modal) modal.style.display = "none"; }
+
+        if(whatsappForm) {
+            whatsappForm.onsubmit = function(e) {
+                e.preventDefault();
+                const product = document.getElementById("productName").value;
+                const name = document.getElementById("userName").value;
+                const phone = document.getElementById("userPhone").value;
+                const wa = document.getElementById("userWhatsapp").value;
+                const address = document.getElementById("userAddress").value;
+                const pin = document.getElementById("userPincode").value;
+
+                const message = `*NEW ORDER - MARKLEE*%0A%0A*Product:* ${product}%0A*Customer:* ${name}%0A*Phone:* ${phone}%0A*WhatsApp:* ${wa}%0A*Address:* ${address}%0A*Pincode:* ${pin}`;
+                window.open(`https://wa.me/918089636070?text=${message}`, '_blank');
+                this.reset();
+                modal.style.display = "none";
+            };
+        }
+    });
+
+    window.addEventListener('scroll', function() {
+        const navbar = document.getElementById('navbar');
+        if (navbar && window.scrollY > 50) navbar.classList.add('scrolled');
+        else if (navbar) navbar.classList.remove('scrolled');
+    });
+
+    const zaraToggle = document.getElementById('mobile-menu-trigger');
+    const navLinks = document.querySelector('.nav-links');
+    if (zaraToggle && navLinks) {
+        zaraToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+    }
+    </script>
+</body>
+</html>
